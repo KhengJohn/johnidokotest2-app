@@ -1,29 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-import style from './App.css'
+import style from './App.css';
  
  class App extends React.Component { 
- // Constructor  
-
  constructor(props) { 
-
     super(props); 
-
-
-
-    this.state = { 
-
-        items: [], 
-
-        DataisLoaded: false
-
-    }; 
-
+      this.state = { 
+         items: [], 
+         DataisLoaded: false
+}; 
 } 
 
 
 componentDidMount() { 
-
     axios.get("https://covidnigeria.herokuapp.com/api?i") 
 
         .then((res) => { 
@@ -46,11 +35,13 @@ render() {
 
     const { DataisLoaded, items } = this.state; 
 
-    if (!DataisLoaded) return <div> 
-
+    if (!DataisLoaded){ 
+        return (
+    <div className='App'> 
         <h1> This Might Take Some Time</h1> 
-        <p>Please Wait.......</p></div> ; 
-
+        <p>Please Wait.......</p>
+        </div>  )
+}
 
 
     return ( 
